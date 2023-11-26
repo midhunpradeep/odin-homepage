@@ -66,15 +66,16 @@ main > section {
 }
 
 .about-me > .img-wrapper {
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.about-me > .img-wrapper > img {
+.about-me img {
   max-width: 400px;
   border-radius: 1rem;
 }
 
-.about-me > .img-wrapper > h1 {
+.about-me h1 {
   color: var(--secondary);
   text-align: right;
 }
@@ -123,4 +124,28 @@ main > section {
 
 .contact-me figcaption {
   text-align: end;
+}
+
+@media (max-width: 1000px) {
+  .about-me {
+    flex-direction: column;
+    padding-top: 1rem;
+  }
+
+  .about-me.diagonal::after {
+    transform: translateY(-25%) scaleY(150%) skewY(var(--skew-angle));
+  }
+
+  .about-me > .img-wrapper {
+    flex-direction: column-reverse;
+    padding: 1rem;
+  }
+
+  .about-me h1 {
+    text-align: center;
+  }
+
+  .about-me .card {
+    border-radius: 1rem;
+  }
 }
