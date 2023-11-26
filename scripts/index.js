@@ -2,7 +2,7 @@
 
 const CURSOR_DURATION_MS = 150;
 // const STAR_DURATION_MS = CURSOR_DURATION_MS * 3;
-const TIME_BETWEEN_STARS_MS = 100;
+const TIME_BETWEEN_STARS_MS = 75;
 const MAX_DISTANCE_BETWEEN_DOTS = 10;
 
 // initialized in main()
