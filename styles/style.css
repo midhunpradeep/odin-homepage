@@ -152,10 +152,18 @@ main > section {
   .my-work .card-wrapper {
     grid-template-columns: repeat(2, 300px);
   }
+
+  .contact-me img {
+    max-width: 250px;
+  }
 }
 
 @media (max-width: 700px) {
   .my-work .card-wrapper {
     grid-template-columns: 250px;
+  }
+
+  .contact-me figure {
+    display: none;
   }
 }
