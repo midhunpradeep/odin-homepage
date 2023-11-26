@@ -6,8 +6,47 @@
   --accent: hsl(216, 49%, 67%);
 }
 
+/* helpers */
+
+.card {
+  background-color: var(--secondary);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+/* /helpers */
+
 body {
   background: var(--background);
   color: var(--text);
   font-family: "Poppins", sans-serif;
+}
+
+.about-me {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.about-me > .img-wrapper {
+  position: relative;
+}
+
+.about-me > .img-wrapper > img {
+  max-width: 400px;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 5px dimgray;
+}
+
+.about-me > .img-wrapper > h1 {
+  position: absolute;
+  bottom: 0.25rem;
+  right: 0.25rem;
+}
+
+.about-me > .card {
+  border-radius: 0 1rem 1rem 0;
+  max-width: 80ch;
+  box-shadow: 2px 2px 5px dimgray;
 }
