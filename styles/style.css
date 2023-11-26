@@ -41,6 +41,15 @@ h2 {
   margin-bottom: 1rem;
 }
 
+a,
+a:visited {
+  color: var(--secondary);
+}
+
+a:hover {
+  color: var(--primary);
+}
+
 main > section {
   padding-block: 5rem;
 }
