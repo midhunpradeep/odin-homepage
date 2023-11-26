@@ -66,9 +66,7 @@ main > section {
 
 .about-me > .img-wrapper > h1 {
   color: var(--secondary);
-  position: absolute;
-  bottom: 0.25rem;
-  right: 0.25rem;
+  text-align: right;
 }
 
 .about-me > .card {
