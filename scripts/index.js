@@ -3,7 +3,9 @@
 const CURSOR_DURATION_MS = 150;
 // const STAR_DURATION_MS = CURSOR_DURATION_MS * 3;
 const TIME_BETWEEN_STARS_MS = 75;
-const MAX_DISTANCE_BETWEEN_DOTS = 10;
+
+// disabled for now due to general jank
+const MAX_DISTANCE_BETWEEN_DOTS = null;
 
 // initialized in main()
 let lastDotX = null;
