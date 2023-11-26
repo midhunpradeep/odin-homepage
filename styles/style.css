@@ -220,6 +220,9 @@ main > section {
 }
 
 /* fancy-cursor */
+/*
+ * Major credit to Hyperplexed at https://www.youtube.com/watch?v=G9207EJySaA
+ */
 
 :root {
   --glow-color: var(--primary);
