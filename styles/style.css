@@ -43,6 +43,13 @@
   transform: scale(1.1);
 }
 
+.fancy-text {
+  font-weight: bold;
+  background: -webkit-linear-gradient(45deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* /helpers */
 
 body {
@@ -123,6 +130,8 @@ main > section {
 .my-work .card > img {
   aspect-ratio: 1 / 1;
   text-align: center;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 
 .project-header {
