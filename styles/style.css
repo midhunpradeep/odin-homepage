@@ -236,6 +236,20 @@ main > section {
   width: 1rem;
   aspect-ratio: 1 / 1;
   pointer-events: none;
+  animation-name: fall;
+  animation-duration: 2000ms;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0px, 200px);
+    opacity: 0;
+  }
 }
 
 /* /fancy-cursor */
