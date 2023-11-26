@@ -14,12 +14,33 @@
   padding: 1rem;
 }
 
+.diagonal {
+  --skew-angle: -5deg;
+  --background: linear-gradient(45deg, var(--primary), var(--accent));
+
+  position: relative;
+  isolation: isolate;
+}
+
+.diagonal::after {
+  content: "";
+  background: var(--background);
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  transform: skewY(var(--skew-angle));
+}
+
 /* /helpers */
 
 body {
   background: var(--background);
   color: var(--text);
   font-family: "Poppins", sans-serif;
+}
+
+section {
+  padding-block: 10rem;
 }
 
 .about-me {
