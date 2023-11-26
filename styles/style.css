@@ -1,0 +1,13 @@
+:root {
+  --text: hsl(220, 12%, 5%);
+  --background: hsl(240, 20%, 99%);
+  --primary: hsl(183, 100%, 86%);
+  --secondary: hsl(216, 12%, 84%);
+  --accent: hsl(216, 49%, 67%);
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: "Poppins", sans-serif;
+}
