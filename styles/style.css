@@ -1,8 +1,8 @@
 :root {
-  --text: hsl(0, 0%, 96%);
-  --background: hsl(0, 0%, 12%);
+  --text: hsl(0, 0%, 95%);
+  --background: hsl(0, 0%, 10%);
   --primary: hsl(348, 97%, 63%);
-  --secondary: hsl(0, 0%, 5%);
+  --secondary: hsl(0, 0%, 15%);
   --accent: hsl(230, 96%, 62%);
 }
 
