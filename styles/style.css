@@ -57,7 +57,7 @@ h2 {
 
 a,
 a:visited {
-  color: var(--secondary);
+  color: inherit;
 }
 
 a:hover {
