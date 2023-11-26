@@ -231,4 +231,11 @@ main > section {
   pointer-events: none;
 }
 
+.star {
+  position: absolute;
+  width: 1rem;
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+}
+
 /* /fancy-cursor */
