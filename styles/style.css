@@ -218,3 +218,17 @@ main > section {
     display: none;
   }
 }
+
+/* fancy-cursor */
+
+:root {
+  --glow-color: var(--primary);
+}
+
+.dot {
+  position: absolute;
+  box-shadow: 0 0 1.2rem 0.5rem var(--glow-color);
+  pointer-events: none;
+}
+
+/* /fancy-cursor */
