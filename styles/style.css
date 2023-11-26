@@ -148,4 +148,14 @@ main > section {
   .about-me .card {
     border-radius: 1rem;
   }
+
+  .my-work .card-wrapper {
+    grid-template-columns: repeat(2, 300px);
+  }
+}
+
+@media (max-width: 700px) {
+  .my-work .card-wrapper {
+    grid-template-columns: 250px;
+  }
 }
