@@ -15,6 +15,7 @@
 }
 
 .diagonal {
+  --skew-angle: -5deg;
   position: relative;
   isolation: isolate;
 }
@@ -25,7 +26,7 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  transform: skewY(-5deg);
+  transform: skewY(var(--skew-angle));
 }
 
 /* /helpers */
@@ -41,18 +42,17 @@ h2 {
 }
 
 main > section {
-  padding-block: 10rem;
-}
-
-main > *:first-child {
-  margin-top: 5rem;
+  padding-block: 5rem;
 }
 
 .about-me {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+}
+
+.about-me.diagonal::after {
+  transform: translateY(-33%) scaleY(150%) skewY(var(--skew-angle));
 }
 
 .about-me > .img-wrapper {
