@@ -127,6 +127,17 @@ main > section {
   max-width: fit-content;
 }
 
+.my-work .card {
+  transition-property: transform, opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+}
+
+.my-work .card-wrapper:has(.card:hover) > .card:not(:hover) {
+  transform: scale(0.95);
+  opacity: 0.5;
+}
+
 .my-work .card > img {
   aspect-ratio: 1 / 1;
   text-align: center;
