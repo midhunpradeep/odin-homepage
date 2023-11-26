@@ -225,7 +225,7 @@ main > section {
   --glow-color: var(--primary);
 }
 
-.dot {
+.glow-dot {
   position: absolute;
   box-shadow: 0 0 1.2rem 0.5rem var(--glow-color);
   pointer-events: none;
