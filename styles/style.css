@@ -36,6 +36,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+h2 {
+  margin-bottom: 1rem;
+}
+
 main > section {
   padding-block: 10rem;
 }
@@ -70,4 +74,21 @@ main > *:first-child {
 .about-me > .card {
   border-radius: 0 1rem 1rem 0;
   max-width: 80ch;
+}
+
+.my-work {
+  max-width: fit-content;
+  margin-inline: auto;
+}
+
+.my-work .card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  gap: 1rem;
+  max-width: fit-content;
+}
+
+.my-work .card > img {
+  aspect-ratio: 1 / 1;
+  text-align: center;
 }
