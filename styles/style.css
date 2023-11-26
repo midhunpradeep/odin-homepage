@@ -36,8 +36,12 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-section {
+main > section {
   padding-block: 10rem;
+}
+
+main > *:first-child {
+  margin-top: 5rem;
 }
 
 .about-me {
