@@ -86,7 +86,7 @@ function main() {
   let currentAnimation = 0;
   let currentStarColor = 0;
 
-  window.addEventListener("mousemove", (event) => {
+  const mouseMoveListener = (event) => {
     createGlowDot(
       event.pageX,
       event.pageY,
@@ -103,6 +103,21 @@ function main() {
       currentAnimation = (currentAnimation + 1) % starAnimations.length;
       currentStarColor = (currentStarColor + 1) % starColors.length;
     }
+  };
+
+  window.addEventListener("mousemove", mouseMoveListener);
+  let hasListener = true;
+
+  const toggleAnimBtn = document.querySelector(".mouse-anim-toggle");
+  toggleAnimBtn.addEventListener("click", () => {
+    if (hasListener) {
+      window.removeEventListener("mousemove", mouseMoveListener);
+      toggleAnimBtn.textContent = "Enable mouse animation";
+    } else {
+      window.addEventListener("mousemove", mouseMoveListener);
+      toggleAnimBtn.textContent = "Disable mouse animation";
+    }
+    hasListener = !hasListener;
   });
 }
 
