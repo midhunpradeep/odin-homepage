@@ -119,6 +119,27 @@ function main() {
     }
     hasListener = !hasListener;
   });
+
+  const settingsList = document.querySelector(".settings");
+  settingsList.addEventListener("transitionrun", () => {
+    if (!settingsList.classList.contains("hidden")) {
+      settingsList.style.visibility = "visible";
+    }
+  });
+  settingsList.addEventListener("transitionend", () => {
+    if (settingsList.classList.contains("hidden")) {
+      settingsList.style.visibility = "hidden";
+    }
+  });
+
+  const settingsBtn = document.querySelector(".settings-btn");
+  settingsBtn.addEventListener("click", () => {
+    settingsBtn.classList.add("rotate");
+    settingsList.classList.toggle("hidden");
+  });
+  settingsBtn.addEventListener("animationend", () => {
+    settingsBtn.classList.remove("rotate");
+  });
 }
 
 main();

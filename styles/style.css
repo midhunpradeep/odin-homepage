@@ -71,25 +71,62 @@ a:hover {
   color: var(--primary);
 }
 
+button {
+  border: unset;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
 main > section {
   padding-block: 5rem;
 }
 
-.settings {
+.settings-wrapper {
+  --animation-duration: 0.2s;
+
   display: flex;
   align-items: center;
   justify-content: end;
   padding: 1rem;
+  gap: 0.5rem;
+}
+
+.settings-wrapper .settings-btn {
+  background: none;
+  padding: 0;
+}
+
+.settings-wrapper .settings-btn img {
+  width: 25px;
+}
+
+.settings-wrapper .settings-btn.rotate {
+  animation: rotate var(--animation-duration) ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.settings {
+  transition: transform var(--animation-duration) ease-in-out;
+  transform-origin: right center;
+}
+
+.settings.hidden {
+  transform: scale(0);
 }
 
 .settings button {
-  border: unset;
   border-radius: 0.67rem;
   padding: 0.2rem 1rem;
   background: var(--secondary);
   color: var(--text);
-  cursor: pointer;
-  transition: transform 0.1s ease-in-out;
 }
 
 .settings button:hover {
