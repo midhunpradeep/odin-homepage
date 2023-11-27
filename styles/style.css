@@ -100,16 +100,29 @@ main > section {
   min-width: 25px;
 }
 
-.settings-wrapper .settings-btn.rotate {
-  animation: rotate var(--animation-duration) ease-in-out;
+.settings-wrapper .settings-btn.rotate-clockwise {
+  animation: rotate-clockwise var(--animation-duration) ease-in-out;
 }
 
-@keyframes rotate {
+.settings-wrapper .settings-btn.rotate-anticlockwise {
+  animation: rotate-anticlockwise var(--animation-duration) ease-in-out;
+}
+
+@keyframes rotate-clockwise {
   0% {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(180deg);
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes rotate-anticlockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-45deg);
   }
 }
 

@@ -134,11 +134,17 @@ function main() {
 
   const settingsBtn = document.querySelector(".settings-btn");
   settingsBtn.addEventListener("click", () => {
-    settingsBtn.classList.add("rotate");
+    if (settingsList.classList.contains("hidden")) {
+      settingsBtn.classList.add("rotate-anticlockwise");
+    } else {
+      settingsBtn.classList.add("rotate-clockwise");
+    }
+
     settingsList.classList.toggle("hidden");
   });
   settingsBtn.addEventListener("animationend", () => {
-    settingsBtn.classList.remove("rotate");
+    settingsBtn.classList.remove("rotate-clockwise");
+    settingsBtn.classList.remove("rotate-anticlockwise");
   });
 }
 
