@@ -146,6 +146,18 @@ function main() {
     settingsBtn.classList.remove("rotate-clockwise");
     settingsBtn.classList.remove("rotate-anticlockwise");
   });
+
+  const settingsArea = document.querySelector(".settings-wrapper");
+  document.addEventListener("click", (event) => {
+    if (
+      !settingsList.classList.contains("hidden") &&
+      event.target !== settingsArea &&
+      !settingsArea.contains(event.target)
+    ) {
+      settingsBtn.classList.add("rotate-clockwise");
+      settingsList.classList.add("hidden");
+    }
+  });
 }
 
 main();
