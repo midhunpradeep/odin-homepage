@@ -156,6 +156,23 @@ main > section {
   margin-left: auto;
 }
 
+.my-work .view-more {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: end;
+  align-items: center;
+}
+
+.my-work .view-more img {
+  width: 35px;
+  transition: transform 0.1s ease-in-out;
+}
+
+.my-work .view-more img:hover {
+  transform: scale(1.1);
+}
+
 .contact-me {
   display: flex;
   justify-content: center;
