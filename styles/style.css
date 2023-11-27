@@ -97,7 +97,7 @@ main > section {
 }
 
 .settings-wrapper .settings-btn img {
-  width: 25px;
+  min-width: 25px;
 }
 
 .settings-wrapper .settings-btn.rotate {
