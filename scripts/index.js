@@ -3,6 +3,7 @@
 const CURSOR_DURATION_MS = 150;
 // const STAR_DURATION_MS = CURSOR_DURATION_MS * 3;
 const TIME_BETWEEN_STARS_MS = 75;
+const DISTANCE_BETWEEN_STARS_PX = 75;
 
 // disabled for now due to general jank
 const MAX_DISTANCE_BETWEEN_DOTS = null;
@@ -41,13 +42,23 @@ function createGlowDot(x, y, maxDistanceBetweenDots, timeout) {
 }
 
 let _lastStarTime = new Date().getTime();
-function shouldCreateStar(delay) {
+let _lastStarX = null;
+let _lastStarY = null;
+function shouldCreateStar(delay, x, y) {
   const currentTime = new Date().getTime();
-  return currentTime - _lastStarTime >= delay;
+  if (currentTime - _lastStarTime >= delay) {
+    return true;
+  }
+
+  const distance = distanceBetween(x, y, _lastStarX, _lastStarY);
+  return distance >= DISTANCE_BETWEEN_STARS_PX;
 }
 
 function createStar(x, y, color, animation) {
   _lastStarTime = new Date().getTime();
+  _lastStarX = x;
+  _lastStarY = y;
+
   const star = document.createElement("div");
   star.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>star-four-points</title><path fill=${color} d="M12,1L9,9L1,12L9,15L12,23L15,15L23,12L15,9L12,1Z" /></svg>`;
   star.classList.add("star");
@@ -66,6 +77,8 @@ function main() {
     (event) => {
       lastDotX = event.pageX;
       lastDotY = event.pageY;
+      _lastStarX = event.pageX;
+      _lastStarY = event.pageY;
     },
     { once: true },
   );
@@ -96,7 +109,7 @@ function main() {
       MAX_DISTANCE_BETWEEN_DOTS,
       CURSOR_DURATION_MS,
     );
-    if (shouldCreateStar(TIME_BETWEEN_STARS_MS)) {
+    if (shouldCreateStar(TIME_BETWEEN_STARS_MS, event.pageX, event.pageY)) {
       createStar(
         event.pageX,
         event.pageY,
