@@ -78,6 +78,7 @@ button {
 }
 
 main {
+  min-height: 100svh;
   position: relative;
   overflow: hidden;
 }
