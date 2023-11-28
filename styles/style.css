@@ -77,6 +77,10 @@ button {
   transition: transform 0.1s ease-in-out;
 }
 
+main {
+  overflow: hidden;
+}
+
 main > section {
   padding-block: 5rem;
 }
@@ -155,10 +159,6 @@ main > section {
   justify-content: center;
   align-items: center;
   padding-inline: 1rem;
-}
-
-.about-me.diagonal::after {
-  transform: translateY(-33%) scaleY(150%) skewY(var(--skew-angle));
 }
 
 .about-me > .img-wrapper {
