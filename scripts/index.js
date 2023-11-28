@@ -7,6 +7,9 @@ const TIME_BETWEEN_STARS_MS = 75;
 // disabled for now due to general jank
 const MAX_DISTANCE_BETWEEN_DOTS = null;
 
+// Add animation nodes as child of main instead of body to prevent page overflow
+const mainElement = document.querySelector("main");
+
 // initialized in main()
 let lastDotX = null;
 let lastDotY = null;
@@ -31,10 +34,10 @@ function createGlowDot(x, y, maxDistanceBetweenDots, timeout) {
   dot.classList.add("glow-dot");
   dot.style.left = `${x}px`;
   dot.style.top = `${y}px`;
-  document.body.appendChild(dot);
+  mainElement.appendChild(dot);
   lastDotX = x;
   lastDotY = y;
-  setTimeout(() => document.body.removeChild(dot), timeout);
+  setTimeout(() => mainElement.removeChild(dot), timeout);
 }
 
 let _lastStarTime = new Date().getTime();
@@ -51,9 +54,9 @@ function createStar(x, y, color, animation) {
   star.style.left = `${x}px`;
   star.style.top = `${y}px`;
   star.style.animationName = animation;
-  document.body.appendChild(star);
+  mainElement.appendChild(star);
   star.addEventListener("animationend", () => {
-    document.body.removeChild(star);
+    mainElement.removeChild(star);
   });
 }
 
