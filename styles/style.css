@@ -341,7 +341,7 @@ main > section {
   position: absolute;
   box-shadow: 0 0 1.2rem 0.5rem var(--glow-color);
   pointer-events: none;
-  animation: disappear 150ms linear;
+  animation: disappear 100ms linear;
 }
 
 .star {
