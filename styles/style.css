@@ -341,6 +341,7 @@ main > section {
   position: absolute;
   box-shadow: 0 0 1.2rem 0.5rem var(--glow-color);
   pointer-events: none;
+  animation: disappear 150ms linear;
 }
 
 .star {
@@ -349,6 +350,20 @@ main > section {
   aspect-ratio: 1 / 1;
   pointer-events: none;
   animation-duration: 2000ms;
+}
+
+@keyframes disappear {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.75);
+  }
+
+  100% {
+    transform: scale(0);
+  }
 }
 
 @keyframes fall-1 {
