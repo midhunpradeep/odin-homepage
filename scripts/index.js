@@ -155,6 +155,10 @@ function main() {
     lastMouseX = null;
     lastMouseY = null;
   });
+  window.addEventListener("scroll", () => {
+    lastMouseX = null;
+    lastMouseY = null;
+  });
 
   window.addEventListener("mousemove", mouseMoveListener);
   let hasListener = true;
