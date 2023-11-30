@@ -423,3 +423,11 @@ main > section {
 }
 
 /* /fancy-cursor */
+
+/* Text hover effect */
+
+.hover-animate {
+  max-width: max-content;
+}
+
+/* /Text hover effect */

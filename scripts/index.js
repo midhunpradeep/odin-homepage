@@ -70,6 +70,38 @@ function createStar(x, y, color, animation) {
   });
 }
 
+// Filled in main()
+const _originalTexts = new Map();
+
+function triggerTextHoverEffect(element, delay, timeBeforeNextAnimate) {
+  const ITERATIONS_PER_LETTER = 3;
+
+  if (element.classList.contains("trigger-text-animating")) {
+    return;
+  }
+
+  element.classList.add("trigger-text-animating");
+  const originalText = _originalTexts.get(element);
+  let i = 0;
+  let interval = setInterval(() => {
+    const j = Math.floor(i / ITERATIONS_PER_LETTER);
+    if (j > originalText.length) {
+      clearInterval(interval);
+      element.textContent = originalText;
+      setTimeout(() => {
+        element.classList.remove("trigger-text-animating");
+      }, timeBeforeNextAnimate);
+
+      return;
+    }
+
+    element.innerText =
+      originalText.slice(0, j) + getRandomString(originalText.length - j);
+
+    i++;
+  }, delay);
+}
+
 function main() {
   let lastMouseX = null;
   let lastMouseY = null;
@@ -127,13 +159,37 @@ function main() {
   window.addEventListener("mousemove", mouseMoveListener);
   let hasListener = true;
 
+  const textAnimateListeners = new Map();
+  for (const animateText of document.querySelectorAll(".hover-animate")) {
+    _originalTexts.set(animateText, animateText.textContent);
+
+    const listener = () => {
+      triggerTextHoverEffect(animateText, 30, 1000);
+    };
+    animateText.addEventListener("mouseover", listener);
+
+    textAnimateListeners.set(animateText, listener);
+  }
+
   const toggleAnimBtn = document.querySelector(".mouse-anim-toggle");
   toggleAnimBtn.addEventListener("click", () => {
     if (hasListener) {
       window.removeEventListener("mousemove", mouseMoveListener);
+      for (const element of textAnimateListeners.keys()) {
+        element.removeEventListener(
+          "mouseover",
+          textAnimateListeners.get(element),
+        );
+      }
       toggleAnimBtn.textContent = "Enable mouse animation";
     } else {
       window.addEventListener("mousemove", mouseMoveListener);
+      for (const element of textAnimateListeners.keys()) {
+        element.addEventListener(
+          "mouseover",
+          textAnimateListeners.get(element),
+        );
+      }
       toggleAnimBtn.textContent = "Disable mouse animation";
     }
     hasListener = !hasListener;
@@ -183,4 +239,18 @@ main();
 
 function distanceBetween(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+}
+
+function getRandomString(length) {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+  let string = "";
+  for (let i = 0; i < length; i++) {
+    string += alphabet.charAt(getRandomInteger(0, alphabet.length));
+  }
+  return string;
+}
+
+function getRandomInteger(low, highExclusive) {
+  return Math.floor(Math.random() * highExclusive) + low;
 }
