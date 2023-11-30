@@ -9,6 +9,11 @@ const MAX_GLOW_DOT_DISTANCE_PX = 7;
 const mainElement = document.querySelector("main");
 
 function createGlowEffect(lastX, lastY, currentX, currentY) {
+  if (lastX === null && lastY === null) {
+    createGlowDot(currentX, currentY);
+    return;
+  }
+
   const mouseMoveDist = distanceBetween(lastX, lastY, currentX, currentY);
   const numDots = Math.max(
     1,
@@ -74,8 +79,6 @@ function main() {
     (event) => {
       _lastStarX = event.pageX;
       _lastStarY = event.pageY;
-      lastMouseX = event.pageX;
-      lastMouseY = event.pageY;
     },
     { once: true },
   );
@@ -115,6 +118,11 @@ function main() {
       currentStarColor = (currentStarColor + 1) % starColors.length;
     }
   };
+
+  document.body.addEventListener("mouseleave", () => {
+    lastMouseX = null;
+    lastMouseY = null;
+  });
 
   window.addEventListener("mousemove", mouseMoveListener);
   let hasListener = true;
