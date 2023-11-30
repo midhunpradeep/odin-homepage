@@ -1,12 +1,8 @@
 "use strict";
 
 const CURSOR_DURATION_MS = 150;
-// const STAR_DURATION_MS = CURSOR_DURATION_MS * 3;
 const TIME_BETWEEN_STARS_MS = 75;
 const DISTANCE_BETWEEN_STARS_PX = 75;
-
-// disabled for now due to general jank
-const MAX_DISTANCE_BETWEEN_DOTS = null;
 
 // Add animation nodes as child of main instead of body to prevent page overflow
 const mainElement = document.querySelector("main");
@@ -14,23 +10,7 @@ const mainElement = document.querySelector("main");
 // initialized in main()
 let lastDotX = null;
 let lastDotY = null;
-function createGlowDot(x, y, maxDistanceBetweenDots, timeout) {
-  if (maxDistanceBetweenDots !== null) {
-    const dist = distanceBetween(x, y, lastDotX, lastDotY);
-    if (dist > maxDistanceBetweenDots) {
-      const numDotsBetween = Math.ceil(dist / maxDistanceBetweenDots) - 1;
-      for (let i = 1; i < numDotsBetween; i++) {
-        const alpha = i / numDotsBetween;
-        createGlowDot(
-          lerp(lastDotX, x, alpha),
-          lerp(lastDotY, y, alpha),
-          null,
-          CURSOR_DURATION_MS,
-        );
-      }
-    }
-  }
-
+function createGlowDot(x, y, timeout) {
   const dot = document.createElement("div");
   dot.classList.add("glow-dot");
   dot.style.left = `${x}px`;
@@ -103,12 +83,7 @@ function main() {
   let currentStarColor = 0;
 
   const mouseMoveListener = (event) => {
-    createGlowDot(
-      event.pageX,
-      event.pageY,
-      MAX_DISTANCE_BETWEEN_DOTS,
-      CURSOR_DURATION_MS,
-    );
+    createGlowDot(event.pageX, event.pageY, CURSOR_DURATION_MS);
     if (shouldCreateStar(TIME_BETWEEN_STARS_MS, event.pageX, event.pageY)) {
       createStar(
         event.pageX,
@@ -180,8 +155,4 @@ main();
 
 function distanceBetween(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-}
-
-function lerp(a, b, alpha) {
-  return a + alpha * (b - a);
 }
