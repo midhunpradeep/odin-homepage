@@ -3,8 +3,26 @@
 const TIME_BETWEEN_STARS_MS = 75;
 const DISTANCE_BETWEEN_STARS_PX = 75;
 
+const MAX_GLOW_DOT_DISTANCE_PX = 7;
+
 // Add animation nodes as child of main instead of body to prevent page overflow
 const mainElement = document.querySelector("main");
+
+function createGlowEffect(lastX, lastY, currentX, currentY) {
+  const mouseMoveDist = distanceBetween(lastX, lastY, currentX, currentY);
+  const numDots = Math.max(
+    1,
+    Math.floor(mouseMoveDist / MAX_GLOW_DOT_DISTANCE_PX),
+  );
+
+  const dx = (currentX - lastX) / numDots;
+  const dy = (currentY - lastY) / numDots;
+  for (let i = 0; i < numDots; i++) {
+    const x = lastX + dx * i;
+    const y = lastY + dy * i;
+    createGlowDot(x, y);
+  }
+}
 
 function createGlowDot(x, y) {
   const dot = document.createElement("div");
@@ -48,11 +66,16 @@ function createStar(x, y, color, animation) {
 }
 
 function main() {
+  let lastMouseX = null;
+  let lastMouseY = null;
+
   window.addEventListener(
     "mousemove",
     (event) => {
       _lastStarX = event.pageX;
       _lastStarY = event.pageY;
+      lastMouseX = event.pageX;
+      lastMouseY = event.pageY;
     },
     { once: true },
   );
@@ -77,7 +100,10 @@ function main() {
   let currentStarColor = 0;
 
   const mouseMoveListener = (event) => {
-    createGlowDot(event.pageX, event.pageY);
+    createGlowEffect(lastMouseX, lastMouseY, event.pageX, event.pageY);
+    lastMouseX = event.pageX;
+    lastMouseY = event.pageY;
+
     if (shouldCreateStar(TIME_BETWEEN_STARS_MS, event.pageX, event.pageY)) {
       createStar(
         event.pageX,
